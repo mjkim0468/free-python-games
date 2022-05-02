@@ -21,8 +21,9 @@ def value():
 
 
 ball = vector(0, 0)
+paddle=vector(0,-100)
 aim = vector(value(), value())
-
+count=0
 
 def draw():
     """Move ball and draw game."""
@@ -33,9 +34,11 @@ def draw():
 
     if x < -200 or x > 200:
         aim.x = -aim.x
+        count +=1
 
     if y < -200 or y > 200:
         aim.y = -aim.y
+        count+=1
 
     clear()
     goto(x, y)
@@ -43,6 +46,7 @@ def draw():
 
     ontimer(draw, 50)
 
+    write("벽에 부딪힌 횟수"+str(count),align="right",font=("Arial",20,"bold"))
 
 setup(420, 420, 370, 0)
 hideturtle()
